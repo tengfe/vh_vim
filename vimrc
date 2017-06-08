@@ -121,6 +121,17 @@
     set pastetoggle=<F12>
 " }
 
+" GVim设置 {
+    if has('gui_running')
+        set guioptions-=T
+        set lines=40
+    else
+        if &term == 'xterm' || &term == 'screen'
+            set t_Co=256
+        endif
+    endif
+" }
+
 " 键位设置 {
     " Leader Map {
         let mapleader=","
