@@ -13,4 +13,4 @@ mkdir ~/.vim/colors
 
 cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/solarized.vim
 
-echo "Install Successful :)
+echo "Install Successful :)"
