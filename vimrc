@@ -1,5 +1,11 @@
 " 简介 {
     "一个简单vim配置方案，包含简单的颜色配置和几个实用的vim插件.
+    "           _   _ _    ___  _  _____        __
+    "    __   _| | | | |_ / _ \/ |( _ ) \      / /
+    "    \ \ / / |_| | __| | | | |/ _ \\ \ /\ / / 
+    "     \ V /|  _  | |_| |_| | | (_) |\ V  V /  
+    "      \_/ |_| |_|\__|\__\_\_|\___/  \_/\_/   
+    "                                             
 " }
 
 " 环境设置 {
@@ -65,6 +71,7 @@
     set history=500
     set spell
     set hidden
+    set guifont=Hack\ 12
 
     set iskeyword-=#
     set iskeyword-=-
@@ -78,6 +85,7 @@
     endif
     set tabpagemax=15
     set showmode
+    set noshowmode
     set cursorline
 
     highlight clear SingColumn
@@ -88,6 +96,8 @@
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
         set showcmd
     endif
+
+    set noerrorbells
 " }
 
 " 编辑设置 {
@@ -128,6 +138,10 @@
 " GVim设置 {
     if has('gui_running')
         set guioptions-=T
+        set guioptions-=r
+        "set guioptions-=l
+        
+        "set guiheadroom=0
         set lines=40
     else
         if &term == 'xterm' || &term == 'screen'
@@ -193,6 +207,10 @@
         let g:airline_theme="solarized"
         let g:airline_solarized_bg='dark'
         let g:airline_powerline_fonts = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#buffer_nr_show = 1
+        let g:airline#extensions#whitespace#enabled = 0
+        let g:airline#extensions#whitespace#symbol = '!'
     " }
 
     " YouCompleteMe设置 {
@@ -205,6 +223,7 @@
         let g:UltiSnipsExpandTrigger = '<C-j>'
         let g:UltiSnipsJumpForwardTrigger = '<C-j>'
         let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+        let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -213,7 +232,7 @@
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-        set completeopt-=preview
+        "set completeopt-=preview
     " }
 
     " NERDTree设置 {
@@ -223,6 +242,7 @@
         let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
         let NERDTreeChDirMode=0
         let NERDTreeQuitOnOpen=1
+        let g:NERDTreeWinSize=35
         let NERDTreeMouseMode=2
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
@@ -281,5 +301,16 @@
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
+    " }
+
+    " syntastic {
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
     " }
 " }
