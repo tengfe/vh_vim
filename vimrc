@@ -34,6 +34,10 @@
         Plugin 'godlygeek/tabular'
         Plugin 'tpope/vim-fugitive'
         Plugin 'nathanaelkane/vim-indent-guides'
+        Plugin 'terryma/vim-multiple-cursors'
+        Plugin 'vimwiki/vimwiki'
+        Plugin 'derekwyatt/vim-protodef'
+        Plugin 'derekwyatt/vim-fswitch'
     call vundle#end()
 " }
 
@@ -314,5 +318,10 @@
         let g:syntastic_auto_loc_list = 1
         let g:syntastic_check_on_open = 1
         let g:syntastic_check_on_wq = 0
+    " }
+
+    " protodef 设置 {
+        let g:disable_protodef_sorting=1
+        let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
     " }
 " }
